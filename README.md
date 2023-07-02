@@ -15,6 +15,6 @@ Example:
  1
        hash1≡HashPasswords.Hash salt1,'123456'
  1
-       hash2≡hash2←HashPasswords.Hash salt2,'123456'
+       hash2≡HashPasswords.Hash salt2,'123456'
  1
  ```
