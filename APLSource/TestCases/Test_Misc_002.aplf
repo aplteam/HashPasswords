@@ -1,0 +1,12 @@
+ R←Test_Misc_002(stopFlag batchFlag);⎕TRAP;hash1;hash2
+⍝ Hash a password without initializing with an empty salt.
+⍝ The test itself is pretty menaingless, but it is important that it initialzes itself.
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ hash1←##.HashPasswords.Hash'MySecretPassword'
+ hash2←##.HashPasswords.Hash'MySecretPassword'
+ →T.PassesIf hash1≡hash2
+
+ R←T._OK
+⍝Done

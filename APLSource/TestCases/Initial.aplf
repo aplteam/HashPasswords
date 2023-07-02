@@ -1,0 +1,9 @@
+ Initial ps
+ :If ~ps.batchFlag
+     :If FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Win-hashes'
+     :AndIf FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Lin-hashes'
+     :AndIf FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Mac-hashes'
+     :AndIf CommTools.YesOrNo'There are hashes saved for all platform - delete all?'
+         ∆RecreateTestHashFolder
+     :EndIf
+ :EndIf

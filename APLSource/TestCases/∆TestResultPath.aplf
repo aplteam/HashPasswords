@@ -1,0 +1,2 @@
+ r←∆TestResultPath
+ r←##.TatinVars.HOME,'/TestResults/'

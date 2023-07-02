@@ -1,0 +1,2 @@
+ r←∆OS
+ r←3↑APLTreeUtils2.GetOperatingSystem ⍬

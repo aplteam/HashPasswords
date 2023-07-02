@@ -1,0 +1,33 @@
+(
+ '# HashPasswords'
+ ''
+ '## Overview'
+ ''
+ 'This package gives you the tools you need to generate the hash for a salted password.'
+ ''
+ 'Note that there are several reasons for salting a password:'
+ ''
+ '* Ensure that passwords that are too short to be secure by normal standards are secure anyway.'
+ '* Prevent an attacker from realising that users are using the same password.'
+ ''
+ 'By salting a password with a randomly generated salt, we increase security.'
+ ''
+ 'Note that both the hash and the salt must be stored in clear text. And no, this is not a security risk!'
+ ''
+ 'For more information see <https://en.m.wikipedia.org/wiki/Salt_(cryptography)>'
+ ''
+ '## Example'
+ ''
+ '```'
+ '      salt1←HashPasswords.CreateSalt'
+ '      hash1←HashPasswords.Hash salt1,''123456'''
+ '      salt2←HashPasswords.CreateSalt'
+ '      ⎕←hash2←HashPasswords.Hash salt2,''123456'''
+ '      hash1≢hash2'
+ ('1'⋄)
+ '      hash1≡HashPasswords.Hash salt1,''123456'''
+ ('1'⋄)
+ '      hash2≡hash2←HashPasswords.Hash salt2,''123456'''
+ ('1'⋄)
+ '```'
+)

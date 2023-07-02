@@ -1,0 +1,17 @@
+ R←Test_Misc_003(stopFlag batchFlag);⎕TRAP;hash1;hash2;salt1;salt2
+⍝ Initialize, create a SALT and hash a password.
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ##.HashPasswords.Init_SHA256 ⍬
+
+ salt1←##.HashPasswords.CreateSalt
+ salt2←##.HashPasswords.CreateSalt
+ hash1←##.HashPasswords.Hash salt1,'MySecretPassword'
+ hash2←##.HashPasswords.Hash salt2,'MySecretPassword'
+ →T.GoToTidyUp hash1≡hash2
+
+ R←T._OK
+
+∆TidyUp:
+ ##.HashPasswords.Dispose

@@ -1,0 +1,30 @@
+ R←Test_Misc_900(stopFlag batchFlag);hash1;hash2;linHashes;macHashes;salt1;salt2;winHashes;⎕TRAP;q;msg;rc
+⍝ Compare the hashes of all supported operating systems
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ :If FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Win-hashes'
+ :AndIf FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Lin-hashes'
+ :AndIf FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Mac-hashes'
+     winHashes←⊃⎕NGET ∆TestResultPath,'Hashes/Win-hashes'
+     linHashes←⊃⎕NGET ∆TestResultPath,'Hashes/Lin-hashes'
+     macHashes←⊃⎕NGET ∆TestResultPath,'Hashes/Mac-hashes'
+     →T.FailsIf winHashes≢linHashes
+     →T.FailsIf winHashes≢macHashes
+     →T.FailsIf linHashes≢macHashes
+
+     R←T._OK
+
+     :If ~batchFlag
+         q←'The hashes are identical on all platforms, delete the hash files?'
+     :AndIf CommTools.YesOrNo q
+         (rc msg)←FilesAndDirs.RmDirByForce ∆TestResultPath,'Hashes'
+         msg Assert rc=0
+         'create!'FilesAndDirs.CheckPath ∆TestResultPath,'Hashes'
+     :EndIf
+ :Else
+     R←T._NotApplicable
+     ⎕←⎕PW⍴'-'
+     ⎕←'>>>> Test 900 cannot be executed: first run test suite on all platforms'
+     ⎕←⎕PW⍴'-'
+ :EndIf

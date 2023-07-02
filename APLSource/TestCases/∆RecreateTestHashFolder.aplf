@@ -1,0 +1,4 @@
+ ∆RecreateTestHashFolder;rc;msg
+ (rc msg)←FilesAndDirs.RmDirByForce ∆TestResultPath,'Hashes'
+ msg Assert rc=0
+ 'create!'FilesAndDirs.CheckPath ∆TestResultPath,'Hashes'
