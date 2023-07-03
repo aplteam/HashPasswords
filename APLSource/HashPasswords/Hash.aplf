@@ -4,4 +4,5 @@
  :If 0=⎕NC'SHA256'
      Init_SHA256 ⍬
  :EndIf
- hash←⎕UCS SHA256.ComputeHash⊂⎕UCS password
+ hash←,Hex SHA256.ComputeHash⊂'UTF-8'⎕UCS password
+ ⍝Done

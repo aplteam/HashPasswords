@@ -1,6 +1,6 @@
- salt←CreateSalt;⎕RL;alp
+ salt←CreateSalt length;⎕RL;alp
 ⍝ Creates (pseudo)-randomly a salt.
- ⎕DL 0.001×?1000
+ ⎕DL 0.0001×?100
  ⎕RL←+/⎕TS
  alp←(⎕C ⎕A),⎕A,⎕D
- salt←alp[?12⍴≢alp]
+ salt←alp[?length⍴≢alp]

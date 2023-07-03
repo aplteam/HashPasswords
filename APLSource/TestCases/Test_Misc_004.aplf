@@ -1,0 +1,14 @@
+ R←Test_Misc_004(stopFlag batchFlag);⎕TRAP;hash
+⍝ Compare with a known hash
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ##.HashPasswords.Init_SHA256 ⍬
+
+ hash←##.HashPasswords.Hash'aplteam-api-key'
+ →T.GoToTidyUp hash≢'7b15602836c9f4e75fc886bea989973e634ca62771800fdfe1722d1c995000cf'
+
+ R←T._OK
+
+∆TidyUp:
+ ##.HashPasswords.Dispose
