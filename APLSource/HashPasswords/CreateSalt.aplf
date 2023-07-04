@@ -1,5 +1,5 @@
  salt←CreateSalt length;⎕RL;alp
-⍝ Creates (pseudo)-randomly a salt.
+⍝ Creates (pseudo)-randomly a salt with `length` characters. Only ASCII chars and digits are used as input.
  ⎕DL 0.0001×?100
  ⎕RL←+/⎕TS
  alp←(⎕C ⎕A),⎕A,⎕D

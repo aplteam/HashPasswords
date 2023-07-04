@@ -1,5 +1,5 @@
 {
-  api: "",
+  api: "API",
   assets: "",
   description: "Salting and hashing passwords",
   documentation: "",
@@ -19,5 +19,5 @@
   source: "APLSource/HashPasswords",
   tags: "salting,hashing,password,cryptography",
   userCommandScript: "",
-  version: "1.0.0+7",
+  version: "1.0.0+8",
 }

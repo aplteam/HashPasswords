@@ -1,6 +1,6 @@
  hash←Hash password
 ⍝ Returns the hash for `password`.\\
-⍝ In case the namespace has not yet been initialized, `Hash` takes care of that.
+⍝ In case `HashPasswords` has not yet been initialized, `Hash` takes care of that.
  :If 0=⎕NC'SHA256'
      Init_SHA256 ⍬
  :EndIf
