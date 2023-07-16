@@ -19,5 +19,5 @@
   source: "APLSource/HashPasswords",
   tags: "salting,hashing,password,cryptography",
   userCommandScript: "",
-  version: "1.0.0+8",
+  version: "1.0.1+12",
 }
