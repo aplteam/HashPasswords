@@ -1,4 +1,5 @@
  Initial ps
+ 'Create!'FilesAndDirs.CheckPath ∆TestResultPath,'Hashes'
  :If ~ps.batchFlag
      :If FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Win-hashes'
      :AndIf FilesAndDirs.IsFile ∆TestResultPath,'Hashes/Lin-hashes'
