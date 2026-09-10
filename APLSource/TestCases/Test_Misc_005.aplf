@@ -1,5 +1,5 @@
  R←Test_Misc_005(stopFlag batchFlag);⎕TRAP;hash
-⍝ Use a specific folder with Conga DLLs
+⍝ Take the Conga library from the folder set in `PathToCongaDLLs` (Linux and macOS only)
  ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

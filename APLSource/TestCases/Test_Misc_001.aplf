@@ -1,6 +1,7 @@
  R←Test_Misc_001(stopFlag batchFlag);⎕TRAP;hash1;hash2
-⍝ Initialize and hash a password with an empty salt.
-⍝ Empty SALT is a must for comparing the hashes from different platforms
+⍝ Initialize, hash a password without a salt, and save the hashes for `Test_Misc_900`.
+⍝ A random salt would make every hash different, so none is used: that way the hashes from different
+⍝ platforms can be compared.
  ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

@@ -1,5 +1,5 @@
  R←Test_API_003(stopFlag batchFlag);⎕TRAP;hash
-⍝ Exercise the API cover `Hash`, starting uninitialised so it has to initialise itself
+⍝ Exercise the API cover `Hash`, starting uninitialized so it has to initialize itself
  ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

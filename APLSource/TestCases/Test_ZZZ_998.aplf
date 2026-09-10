@@ -1,5 +1,5 @@
  R←Test_ZZZ_998(stopFlag batchFlag);⎕IO;⎕ML;⎕TRAP;report;buff;rf;candidate;lookFor1;lookFor2
-⍝ Checks on two text vectors: "TODO" and "CHECK", embraced by "⍝"; never fails, just reports.
+⍝ Reports comments marked "TODO" or "CHECK" enclosed in "⍝"; never fails, and is skipped in batch mode.
  ⎕IO←1 ⋄ ⎕ML←1
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
@@ -23,7 +23,7 @@
  candidate←9=⊃∘⎕NC¨buff[;1]
  buff←(candidate{⍺:⍵≡⍕⍎⍵ ⋄ 1}¨buff[;1])⌿buff   ⍝ remove references
  :If 0≠≢buff
-     report←↓(⊂' ',lookFor2,' found:'),(⊂'   '),¨buff
+     report,←↓(⊂' ',lookFor2,' found:'),(⊂'   '),¨buff
      ⎕←('Checking for ',lookFor1,' and ',lookFor2,' '){⍵↑,'--- ',⍺,' ',⍵⍴'-'}80⌊⎕PW-1
      ⎕←↑report
      :If ~batchFlag
