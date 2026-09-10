@@ -1,6 +1,7 @@
 {
   api: "API",
   assets: "",
+  checkLICENSEfile: 1,
   description: "Salting and hashing passwords",
   documentation: "",
   files: "",
@@ -19,5 +20,5 @@
   source: "APLSource/HashPasswords",
   tags: "salting,hashing,password,cryptography",
   userCommandScript: "",
-  version: "2.0.0+14",
+  version: "2.0.1+15",
 }
