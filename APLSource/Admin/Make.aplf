@@ -1,46 +1,40 @@
- {r}←{refToMakeHelpers}Make flag;M;C;path;zipFilename;res;parms;cfg;noOf;answer;q
-⍝ "Make"s this projects.
-⍝ You may pass a ref pointing to `MakeHelpers` as `⍺`.
-⍝ If you don't, the function checks whether it's available in `⎕SE`.
-⍝ If it is, the user is asked whether she wants to use that.
-⍝ If she refuses or if it's not available in `⎕SE`, then the function
-⍝ attempts to load the package into `⎕SE` with ]Tatin.LoadPackages.
+ {r}←Make flag;flag2;answer;q;M;noOf;C;path;parms;zipFilename;cfg
+⍝ "Make"s this project. Does nothing when `flag` is 0.
+⍝ The function checks whether MakeHelpers is available in `⎕SE`.
+⍝ If it is, the user is asked whether to use that one.
+⍝ If the user declines, or if it's not available in `⎕SE`, then the function
+⍝ attempts to load the package into `⎕SE` with `⎕SE.Tatin.LoadPackages`.
 ⍝ Returns 1 in case a new version was created and 0 otherwise.
  r←0
  :If flag
      :Section  ⍝ Establish ref to "MakeHelpers"
-         :If 0=⎕NC'refToMakeHelpers'
-             :If 9=⎕SE.⎕NC'MakeHelpers'
-                 flag←¯1
-                 :Repeat
-                     answer←⍞,0/⍞←q←'Do you want to use "MakeHelpers" ',⎕SE.MakeHelpers.Version,' in ⎕SE (n=re-load) (Y/n)?'
-                     answer←(≢q)↓answer
-                     :If 0=≢answer
-                     :OrIf 'Yy'∊⍨¯1↑answer
-                         flag←1
-                     :ElseIf 'Nn'∊⍨¯1↑answer
-                         flag←0
-                     :EndIf
-                 :Until flag∊0 1
-                 :If flag
-                     M←⎕SE.MakeHelpers
-                 :Else
-                     noOf←⎕SE.Tatin.LoadPackages'MakeHelpers'⎕SE
-                     'Could not load the package "MakeHelpers"'⎕SIGNAL 6/⍨0=noOf
-                     M←⎕SE.MakeHelpers
+         :If 9=⎕SE.⎕NC'MakeHelpers'
+             flag2←¯1
+             :Repeat
+                 answer←⍞,0/⍞←q←'Do you want to use "MakeHelpers" ',⎕SE.MakeHelpers.Version,' in ⎕SE (n=re-load) (Y/n)?'
+                 answer←(≢q)↓answer
+                 :If 0=≢answer
+                 :OrIf 'Yy'∊⍨¯1↑answer
+                     flag2←1
+                 :ElseIf 'Nn'∊⍨¯1↑answer
+                     flag2←0
                  :EndIf
+             :Until flag2∊0 1
+             :If flag2
+                 M←⎕SE.MakeHelpers
              :Else
-                 noOf←⎕SE.Tatin.LoadPackages'MakeHelpers'⎕SE
-                 'Could not load the package "MakeHelpers"'⎕SIGNAL 6/⍨0=noOf
+                 noOf←⎕SE.Tatin.LoadPackages'aplteam-MakeHelpers'⎕SE
+                 'Could not load the package "aplteam-MakeHelpers"'⎕SIGNAL 6/⍨0=noOf
                  M←⎕SE.MakeHelpers
              :EndIf
          :Else
-             M←refToMakeHelpers
+             noOf←⎕SE.Tatin.LoadPackages'aplteam-MakeHelpers'⎕SE
+             'Could not load the package "aplteam-MakeHelpers"'⎕SIGNAL 6/⍨0=noOf
+             M←⎕SE.MakeHelpers
          :EndIf
      :EndSection
-     ⎕←'Using "MakeHelpers" version ',⎕SE.MakeHelpers.Version
+     ⎕←'Using "MakeHelpers" version ',M.Version
      C←##.CiderConfig
-     ⎕←'' ⋄ 0 0⍴⍞,0/⍞←'Pause sync services like Dropbox, Google Drive etc. in order to avoid FILE ACCESS errors. Press <enter> to continue '
      :If ⎕NULL≡cfg←M.EditPackageConfigFile ##.TatinVars
          ⎕←'Cancelled by user' ⋄ →0
      :EndIf
@@ -48,7 +42,7 @@
      M.RecreateFolder path
      {}⎕SE.Tatin.CreateAPIfromCFG ##.HashPasswords cfg
      parms←⎕SE.Tatin.CreateBuildParms C.HOME
-     parms.targetPath←C.CIDER.distributionFolder
+     parms.targetPath←path
      parms.version←cfg.version
      zipFilename←⎕SE.Tatin.BuildPackage parms
      ⎕←'*** New version built successfully:',M.CR,'   ',zipFilename
