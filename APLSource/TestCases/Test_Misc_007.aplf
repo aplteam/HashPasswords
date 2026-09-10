@@ -1,0 +1,12 @@
+ R←Test_Misc_007(stopFlag batchFlag);⎕TRAP;bits
+⍝ Exercise `Is64Bit`
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ bits←##.HashPasswords.Is64Bit
+ →T.PassesIf 0=⍴⍴bits                                ⍝ Must be a scalar: `Init_SHA256` picks with `(1+Is64Bit)⊃`
+ →T.PassesIf bits∊0 1
+ →T.PassesIf bits≡'-64'≡¯3↑1⊃'#'⎕WG'APLVersion'
+ →T.PassesIf bits∨'Mac'≢∆OS                          ⍝ There is no 32-bit Dyalog for macOS
+
+ R←T._OK

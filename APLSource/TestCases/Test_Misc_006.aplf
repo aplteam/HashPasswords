@@ -1,0 +1,22 @@
+ R←Test_Misc_006(stopFlag batchFlag);⎕TRAP;version;outer;inner
+⍝ Exercise `Version`: first the real one, then all three branches in namespaces built for the purpose
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ version←##.HashPasswords.Version
+ →T.PassesIf 0<≢'^\d+\.\d+\.\d+'⎕S 0⊢version
+
+ outer←⎕NS''
+ inner←outer.⎕NS''
+ {}inner.⎕FX ##.HashPasswords.⎕NR'Version'
+ →T.PassesIf''≡inner.Version                         ⍝ No TatinVars anywhere: not loaded by Tatin
+
+ {}'TatinVars'outer.⎕NS''
+ outer.TatinVars.CONFIG←'{version: "1.2.3+4"}'
+ →T.PassesIf'1.2.3+4'≡inner.Version                  ⍝ TatinVars in the parent
+
+ {}'TatinVars'inner.⎕NS''
+ inner.TatinVars.CONFIG←'{version: "5.6.7+8"}'
+ →T.PassesIf'5.6.7+8'≡inner.Version                  ⍝ TatinVars in the namespace itself wins
+
+ R←T._OK

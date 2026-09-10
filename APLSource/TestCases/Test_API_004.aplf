@@ -1,0 +1,14 @@
+ R←Test_API_004(stopFlag batchFlag);⎕TRAP;public;covers
+⍝ `Public` must name existing functions, and exactly those that have an API cover
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ public←##.HashPasswords.Public
+ →T.PassesIf∧/3=⌊##.HashPasswords.⎕NC public         ⍝ Nested argument gives detailed nameclasses, hence ⌊
+
+ covers←##.HashPasswords.API.⎕NL ¯3
+ →T.PassesIf(≢public)=≢covers
+ →T.PassesIf∧/public∊covers
+ →T.PassesIf∧/covers∊public
+
+ R←T._OK
