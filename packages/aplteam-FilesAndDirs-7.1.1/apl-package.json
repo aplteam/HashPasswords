@@ -1,7 +1,8 @@
 {
   api: "API",
   assets: "",
-  date: 20250330.085049,
+  checkLICENSEfile: 1,
+  date: 20250825.174448,
   description: "Utilities for doing gymnastics with files and directories",
   documentation: "",
   files: "",
@@ -19,7 +20,7 @@
   project_url: "https://github.com/aplteam/FilesAndDirs",
   source: "APLSource/FilesAndDirs",
   tags: "files,directories,copy,move,read,write,get,put",
-  uri: "https://tatin.dev/",
+  uri: "http://localhost:444/",
   userCommandScript: "",
-  version: "6.0.1+185",
+  version: "7.1.1+207",
 }

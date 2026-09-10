@@ -1,6 +1,7 @@
 {
   api: "OS",
   assets: "",
+  checkLICENSEfile: 1,
   date: 20250328.131321,
   description: "OS-related tools for all major platforms",
   documentation: "",
@@ -19,7 +20,7 @@
   project_url: "https://github.com/aplteam/OS",
   source: "APLSource/OS.aplc",
   tags: "os-tools",
-  uri: "https://tatin.dev/",
+  uri: "http://localhost:444/",
   userCommandScript: "",
   version: "4.0.0+67",
 }

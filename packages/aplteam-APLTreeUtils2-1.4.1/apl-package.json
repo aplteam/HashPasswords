@@ -1,6 +1,7 @@
 {
   api: "APLTreeUtils2",
   assets: "",
+  checkLICENSEfile: 1,
   date: 20241209.164418,
   description: "General utilities required by most members of the APLTree library",
   documentation: "",
@@ -19,7 +20,7 @@
   project_url: "https://github.com/aplteam/APLTreeUtils2",
   source: "APLSource/APLTreeUtils2.aplc",
   tags: "tools,utilities",
-  uri: "https://tatin.dev/",
+  uri: "http://localhost:444/",
   userCommandScript: "",
   version: "1.4.1+79",
 }

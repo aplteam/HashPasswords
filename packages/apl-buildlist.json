@@ -1,6 +1,6 @@
 {
   packageID: [
-    "aplteam-FilesAndDirs-6.0.1",
+    "aplteam-FilesAndDirs-7.1.1",
     "aplteam-APLTreeUtils2-1.4.1",
     "aplteam-OS-4.0.0",
   ],
@@ -10,8 +10,8 @@
     0,
   ],
   url: [
-    "https://tatin.dev/",
-    "https://tatin.dev/",
-    "https://tatin.dev/",
+    "http://localhost:444/",
+    "http://localhost:444/",
+    "http://localhost:444/",
   ],
 }
