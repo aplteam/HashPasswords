@@ -1,6 +1,8 @@
  {r}←{force}Init_SHA256 dummy;extn;⎕USING;filename;path;OS
 ⍝ Make the necessary preparations for hashing a password.\\
-⍝ Once initiallized, the function does not run its code again, except when a 1 is passed as `⍺`.
+⍝ Once initiallized, the function does not run its code again, except when a 1 is passed as `⍺`.\\
+⍝ Returns a shy 1.
+ r←1
  force←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'force'
  '⍺ must be a Boolean'Assert(⊂force)∊0 1
  :If 9≠⎕NC'SHA256'
