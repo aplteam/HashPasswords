@@ -1,0 +1,14 @@
+ R←Test_API_003(stopFlag batchFlag);⎕TRAP;hash
+⍝ Exercise the API cover `Hash`, starting uninitialised so it has to initialise itself
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ##.HashPasswords.Dispose
+
+ hash←##.HashPasswords.API.Hash'aplteam-api-key'
+ →T.GoToTidyUp hash≢'7b15602836c9f4e75fc886bea989973e634ca62771800fdfe1722d1c995000cf'
+
+ R←T._OK
+
+∆TidyUp:
+ ##.HashPasswords.Dispose

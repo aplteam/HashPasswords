@@ -1,0 +1,22 @@
+ R←Test_API_001(stopFlag batchFlag);⎕TRAP;result
+⍝ Exercise the API covers `Init_SHA256` (monadic and dyadic) and `Dispose`
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ##.HashPasswords.Dispose
+
+ result←##.HashPasswords.API.Init_SHA256 ⍬
+ →T.GoToTidyUp 1≢result
+ →T.GoToTidyUp 9≠##.HashPasswords.⎕NC'SHA256'
+
+ result←1 ##.HashPasswords.API.Init_SHA256 ⍬
+ →T.GoToTidyUp 1≢result
+ →T.GoToTidyUp 9≠##.HashPasswords.⎕NC'SHA256'
+
+ ##.HashPasswords.API.Dispose
+ →T.GoToTidyUp 0≠##.HashPasswords.⎕NC'SHA256'
+
+ R←T._OK
+
+∆TidyUp:
+ ##.HashPasswords.Dispose

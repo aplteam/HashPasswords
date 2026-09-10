@@ -1,0 +1,13 @@
+ R←Test_API_002(stopFlag batchFlag);⎕TRAP;salt1;salt2
+⍝ Exercise the API cover `CreateSalt`
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ salt1←##.HashPasswords.API.CreateSalt 32
+ →T.PassesIf 32=≢salt1
+ →T.PassesIf ∧/salt1∊(⎕C ⎕A),⎕A,⎕D
+
+ salt2←##.HashPasswords.API.CreateSalt 32
+ →T.FailsIf salt1≡salt2
+
+ R←T._OK
